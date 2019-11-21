@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>WebSocketClient</title>
+	<style>
+		div.container {
+			margin: 10px 0;
+		}
+		div.status {
+			color: #0b76f1;
+		}
+		div#editor {
+			width: 500px;
+			height: 50px;
+			border: 1px #666666 solid;
+		}
+		input {
+			width: 340px;
+		}
+		table#commons {
+			width: 500px;
+			table-layout:fixed;
+			word-wrap: break-word;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		行情： ws://openmd.shinnytech.com/t/md/front/mobile
+		<br/> 交易： ws://opentd.shinnytech.com/
+	</div>
+	<div>
+		<label>URL:</label>
+		<input type="text" id="serverUrl" value="ws://opentd.shinnytech.com/" />
+	</div>
+	<div>
+		<button id="connectButton">Open</button>
+		<button id="disconnectButton">Close</button>
+	</div>
+	<div class="container status">
+		STATUS: <span id='status'></span>
+	 </div>
+	<div class="container">
+		<div>这里不能写注释</div>
+		<div id="editor"></div>
+		<button id="sendButton">Send</button>
+	</div>
+	<div class="container">
+		<div>常用内容</div>
+		<table id="commons" border="1" cellspacing="0" cellpadding="4">
+			<thead>
+				<tr>
+					<td style="width:10%">name</td>
+					<td style="width:80%">content</td>
+					<td style="width:10%">send</td>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
+
+	<script src="jquery.min.js"></script>
+	<script src="ace-min/ace.js"></script>
+	<script src="index.js"></script>
+</body>
+
+</html>
