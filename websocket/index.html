@@ -13,8 +13,12 @@
 		}
 		div#editor {
 			width: 500px;
-			height: 50px;
+			height: 20px;
 			border: 1px #666666 solid;
+		}
+		span.url {
+			cursor: pointer;
+			background-color: bisque;
 		}
 		input {
 			width: 340px;
@@ -28,28 +32,27 @@
 </head>
 
 <body>
-	<div class="container">
-		行情： ws://openmd.shinnytech.com/t/md/front/mobile
-		<br/> 交易： ws://opentd.shinnytech.com/
-	</div>
+
 	<div>
 		<label>URL:</label>
-		<input type="text" id="serverUrl" value="ws://opentd.shinnytech.com/" />
-	</div>
-	<div>
+		<input type="text" id="serverUrl" value="wss://opentd.shinnytech.com/trade/user0" />
 		<button id="connectButton">Open</button>
 		<button id="disconnectButton">Close</button>
+	</div>
+	<div>
+		<span class='url' id='md_url'>wss://openmd.shinnytech.com/t/md/front/mobile</span>
+		<span class='url' id='td_url'>wss://opentd.shinnytech.com/trade/user0</span>
 	</div>
 	<div class="container status">
 		STATUS: <span id='status'></span>
 	 </div>
 	<div class="container">
-		<div>这里不能写注释</div>
+		<div>打开 devtools 查看 websockets 具体数据</div>
 		<div id="editor"></div>
 		<button id="sendButton">Send</button>
 	</div>
 	<div class="container">
-		<div>常用内容</div>
+		<div>快捷发送</div>
 		<table id="commons" border="1" cellspacing="0" cellpadding="4">
 			<thead>
 				<tr>

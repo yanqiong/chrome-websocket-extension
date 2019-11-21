@@ -10,8 +10,12 @@ var commons = [
 		content: '{"aid": "peek_message"}'
 	},
 	{
+		name: '订阅合约',
+		content: { "aid": "subscribe_quote", "ins_list": "SHFE.rb2001,DCE.m2001" }
+	},
+	{
 		name: '登录',
-		content: { "aid": "req_login", "bid": "S上期技术", "user_name": "abcd", "password": "1234" }
+		content: { "aid": "req_login", "bid": "快期模拟", "user_name": "022632", "password": "123456" }
 	},
 	{
 		name: '下单',
@@ -22,13 +26,13 @@ var commons = [
 			volume_condition: "ANY",
 			time_condition: 'GFD',
 			hedge_flag: "SPECULATION",
-			user_id: '022631',
 			limit_price: 4233,
 			order_id: 'abcdefg',
 			direction: "BUY",
-			offset: "CLOSE", // OPEN | CLOSE | CLOSETODAY
+			offset: "OPEN", // OPEN | CLOSE | CLOSETODAY
 			volume: 1,
 			price_type: "LIMIT",
+			user_id: '022632',
 		}
 	},
 	{
@@ -36,7 +40,7 @@ var commons = [
 		content: {
 			aid: "cancel_order", // 撤单请求
 			order_id: 'abcdefg',
-			user_id: '022631'
+			user_id: '022632'
 		}
 	},
 ]
@@ -60,6 +64,13 @@ $(function () {
 	disconnectButton.onclick = function () {
 		ws.close();
 	}
+	urls = document.querySelectorAll('.url')
+	urls.forEach(element => {
+		element.onclick = function(e){
+			document.querySelector('#serverUrl').value = e.target.innerText
+		}
+	});
+	
 	sendButton.onclick = function () {
 		if (ws && ws.send) {
 			ws.send(editor.getSession().getValue().trim());
@@ -68,6 +79,7 @@ $(function () {
 		}
 	}
 	initCommons();
+
 });
 
 var initCommons = function () {
